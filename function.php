@@ -10,6 +10,9 @@ function pass_generator($passlength){
     for ($i=0; $i < $passlength; $i++) { 
         $pass_element = array_merge($num,$alphabet_lower,$alphabet_upper,$symbol);
         $element = rand(0, count($pass_element));
+        session_start();
+        $_SESSION['password'] = $password;
+        header("Location: password.php");
         $password .= $pass_element[$element];
     }
     return $password;
